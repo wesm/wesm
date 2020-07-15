@@ -8,7 +8,7 @@ introduction to the Python data stack (IPython, NumPy, pandas, and matplotlib).
 
 <a href="https://amzn.to/2KI5JJw">
   <img class="img-responsive" src="https://covers.oreillystatic.com/images/0636920050896/cat.gif"
-       height="300" alt="">
+       height="200" alt="">
 </a>
 
 [1]: https://github.com/pandas-dev/pandas
@@ -16,4 +16,4 @@ introduction to the Python data stack (IPython, NumPy, pandas, and matplotlib).
 [3]: https://amzn.to/2KI5JJw
 [4]: https://ursalabs.org/
 [5]: https://github.com/sponsors/wesm
-[5]: https://github.com/sponsors/ursa-labs
+[6]: https://github.com/sponsors/ursa-labs
