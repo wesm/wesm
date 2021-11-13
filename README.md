@@ -1,8 +1,8 @@
 Most people know me as the creator of [pandas][1], but I also
 co-created [Apache Arrow][2] and [Ibis][8]. I am now the CTO of
 [Voltron Data][4], where we are building Arrow-powered computing
-systems. I am a Member of the [Apache Software Foundation][7] and also
-created the . I [blog occasionally on my personal website][9].
+systems. I am a Member of the [Apache Software Foundation][7]. I [blog
+occasionally on my personal website][9].
 
 You can [sponsor me][5] with GitHub Sponsors. I donate at least $1000
 each year to [NumFOCUS][10] to support pandas and also encourage you
