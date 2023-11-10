@@ -1,8 +1,11 @@
 Most people know me as the creator of [pandas][1], but I also
-co-created [Apache Arrow][2] and [Ibis][8]. I am now the CTO of
-[Voltron Data][4], where we are building Arrow-powered computing
-systems. I am a Member of the [Apache Software Foundation][7]. I [blog
-occasionally on my personal website][9].
+co-created [Apache Arrow][2] and [Ibis][8]. I am now a Principal
+Architect at [Posit PBC][11]. I am a Member of the [Apache Software
+Foundation][7]. I was previously CTO and co-founder at [Voltron
+Data][4] and remain a Senior Advisor. Before that I worked at Two
+Sigma Investments, Cloudera, and co-founded DataPad.
+
+I [blog occasionally on my personal website][9].
 
 You can [sponsor me][5] with GitHub Sponsors. I donate at least $1000
 each year to [NumFOCUS][10] to support pandas and also encourage you
@@ -23,3 +26,4 @@ it to be out in 2022.
 [8]: http://github.com/ibis-project/ibis
 [9]: https://wesmckinney.com/archives.html
 [10]: https://numfocus.org/
+[11]: https://posit.co
