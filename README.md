@@ -1,6 +1,7 @@
-<table border="0" style="border: none; border-collapse: collapse;">
-<tr style="border: none;">
-<td width="70%" style="border: none; vertical-align: top;">
+<div>
+<a href="https://amzn.to/3DyLaJc">
+  <img src="python-for-data-analysis-3rd-ed.png" alt="Python for Data Analysis 3rd Edition" width="250" align="right">
+</a>
 
 Most people know me as the creator of [pandas][1], but I also
 co-created [Apache Arrow][2] and [Ibis][8].
@@ -21,16 +22,7 @@ introduction to the Python data stack including pandas, NumPy, IPython, and
 Jupyter. It's been used by hundreds of thousands of data scientists and analysts
 worldwide.
 
-</td>
-<td width="30%" style="border: none; vertical-align: top;">
-
-<a href="https://amzn.to/3DyLaJc">
-  <img src="python-for-data-analysis-3rd-ed.png" alt="Python for Data Analysis 3rd Edition" width="100%">
-</a>
-
-</td>
-</tr>
-</table>
+</div>
 
 [1]: https://github.com/pandas-dev/pandas
 [2]: https://github.com/apache/arrow
