@@ -12,14 +12,25 @@ You can [sponsor me][5] with GitHub Sponsors. I donate at least $1000
 each year to [NumFOCUS][10] to support pandas and also encourage you
 to consider donating there, too.
 
-<a href="https://amzn.to/3DyLaJc">
-  <img src="python-for-data-analysis-3rd-ed.png" alt="Python for Data Analysis 3rd Edition" width="200" align="right">
-</a>
+<table>
+<tr>
+<td width="70%">
 
 My book [Python for Data Analysis][3] (3rd Edition, 2022) is a comprehensive
 introduction to the Python data stack including pandas, NumPy, IPython, and
 Jupyter. It's been used by hundreds of thousands of data scientists and analysts
 worldwide.
+
+</td>
+<td width="30%">
+
+<a href="https://amzn.to/3DyLaJc">
+  <img src="python-for-data-analysis-3rd-ed.png" alt="Python for Data Analysis 3rd Edition" width="100%">
+</a>
+
+</td>
+</tr>
+</table>
 
 [1]: https://github.com/pandas-dev/pandas
 [2]: https://github.com/apache/arrow
