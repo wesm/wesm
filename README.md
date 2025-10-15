@@ -1,3 +1,7 @@
+<table border="0" style="border: none; border-collapse: collapse;">
+<tr style="border: none;">
+<td width="70%" style="border: none; vertical-align: top;">
+
 Most people know me as the creator of [pandas][1], but I also
 co-created [Apache Arrow][2] and [Ibis][8].
 
@@ -12,17 +16,13 @@ You can [sponsor me][5] with GitHub Sponsors. I donate at least $1000
 each year to [NumFOCUS][10] to support pandas and also encourage you
 to consider donating there, too.
 
-<table>
-<tr>
-<td width="70%">
-
 My book [Python for Data Analysis][3] (3rd Edition, 2022) is a comprehensive
 introduction to the Python data stack including pandas, NumPy, IPython, and
 Jupyter. It's been used by hundreds of thousands of data scientists and analysts
 worldwide.
 
 </td>
-<td width="30%">
+<td width="30%" style="border: none; vertical-align: top;">
 
 <a href="https://amzn.to/3DyLaJc">
   <img src="python-for-data-analysis-3rd-ed.png" alt="Python for Data Analysis 3rd Edition" width="100%">
