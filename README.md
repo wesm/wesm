@@ -6,7 +6,7 @@ I created [pandas](https://github.com/pandas-dev/pandas) and co-created [Apache 
 
 **[Positron](https://github.com/posit-dev/positron)** -- A next-generation data science IDE built on VS Code, supporting Python and R.
 
-**[Spicy Takes](https://spicytakes.org)** -- An archive of 25+ prolific tech writers (Paul Graham, Martin Fowler, and others) analyzed by LLMs. Every post gets a TL;DR, quotations, and a spiciness rating.
+**[Spicy Takes](https://spicytakes.org)** -- An archive of 20+ prolific tech writers (Paul Graham, Martin Fowler, and others) analyzed by LLMs. Every post gets a TL;DR, quotations, and a spiciness rating.
 
 ---
 
