@@ -4,6 +4,8 @@ I created [pandas](https://github.com/pandas-dev/pandas) and co-created [Apache 
 
 **[roborev](https://roborev.io)** -- Continuous code review for AI coding agents. Reviews every commit via git hooks, catches issues while context is fresh, and can fix them autonomously. Works with Claude Code, Cursor, Copilot, Gemini, and others. Runs locally, no external infrastructure.
 
+**[Positron](https://github.com/posit-dev/positron)** -- A next-generation data science IDE built on VS Code, supporting Python and R. Open source from Posit.
+
 **[Spicy Takes](https://spicytakes.org)** -- An archive of 25+ prolific tech writers (Paul Graham, Martin Fowler, and others) analyzed by LLMs. Every post gets a TL;DR, quotations, and a spiciness rating.
 
 ---
