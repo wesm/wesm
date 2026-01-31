@@ -1,4 +1,4 @@
-I created [pandas](https://github.com/pandas-dev/pandas) and co-created [Apache Arrow](https://github.com/apache/arrow) and [Ibis](https://github.com/ibis-project/ibis). I'm a Principal Architect at [Posit](https://posit.co), Chief Scientist at [Voltron Data](https://voltrondata.com), and a GP at [Composed Ventures](https://composed.vc). [Apache Member](https://apache.org). I [blog sometimes](https://wesmckinney.com/archives.html).
+I created [pandas](https://github.com/pandas-dev/pandas) and co-created [Apache Arrow](https://github.com/apache/arrow) and [Ibis](https://github.com/ibis-project/ibis). I'm a Principal Architect at [Posit](https://posit.co) and a GP at [Composed Ventures](https://composed.vc). [Apache Member](https://apache.org). I [blog sometimes](https://wesmckinney.com/archives.html).
 
 ## What I'm working on
 
