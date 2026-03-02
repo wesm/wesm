@@ -1,20 +1,20 @@
 I created [pandas](https://github.com/pandas-dev/pandas) and co-created [Apache Arrow](https://github.com/apache/arrow) and [Ibis](https://github.com/ibis-project/ibis).
 
-[![pandas stars](https://img.shields.io/github/stars/pandas-dev/pandas?style=social&label=pandas)](https://github.com/pandas-dev/pandas)&nbsp;&nbsp;[![arrow stars](https://img.shields.io/github/stars/apache/arrow?style=social&label=arrow)](https://github.com/apache/arrow)&nbsp;&nbsp;[![ibis stars](https://img.shields.io/github/stars/ibis-project/ibis?style=social&label=ibis)](https://github.com/ibis-project/ibis)
+[![pandas](https://img.shields.io/github/stars/pandas-dev/pandas?style=flat-square&label=pandas&color=blue)](https://github.com/pandas-dev/pandas)&nbsp;
+[![arrow](https://img.shields.io/github/stars/apache/arrow?style=flat-square&label=arrow&color=blue)](https://github.com/apache/arrow)&nbsp;
+[![ibis](https://img.shields.io/github/stars/ibis-project/ibis?style=flat-square&label=ibis&color=blue)](https://github.com/ibis-project/ibis)
 
 Principal Architect at [Posit](https://posit.co) · GP at [Composed Ventures](https://composed.vc) · [Apache Member](https://apache.org) · [Blog](https://wesmckinney.com/archives.html) · Previously: Two Sigma, Cloudera, DataPad
 
 #### What I'm working on
 
-**[roborev](https://roborev.io)** -- Continuous code review for AI coding agents. Reviews every commit via git hooks, catches issues while context is fresh, and can fix them autonomously. Works with Claude Code, Cursor, Copilot, Gemini, and others. Runs locally, no external infrastructure.
-
-**[agentsview](https://github.com/wesm/agentsview)** [![GitHub stars](https://img.shields.io/github/stars/wesm/agentsview?style=social)](https://github.com/wesm/agentsview) -- Fast local coding agent session viewer for Claude, Codex, and Gemini. Analytics dashboard and full text search across all your sessions.
-
-**[msgvault](https://github.com/wesm/msgvault)** [![GitHub stars](https://img.shields.io/github/stars/wesm/msgvault?style=social)](https://github.com/wesm/msgvault) -- Archive a lifetime of email and chat locally. Full Gmail backup with search, DuckDB-powered analytics, an interactive TUI, and an MCP server for querying your messages with AI -- all entirely offline.
-
-**[Spicy Takes](https://spicytakes.org)** -- An archive of 20+ prolific tech writers (Paul Graham, Martin Fowler, and others) analyzed by LLMs. Every post gets a TL;DR, quotations, and a spiciness rating.
-
-**[Positron](https://github.com/posit-dev/positron)** [![GitHub stars](https://img.shields.io/github/stars/posit-dev/positron?style=social)](https://github.com/posit-dev/positron) -- A next-generation data science IDE built on VS Code, supporting Python and R.
+| Project | Description |
+|---------|-------------|
+| **[roborev](https://roborev.io)** | Continuous code review for AI coding agents. Reviews every commit via git hooks, catches issues while context is fresh, and can fix them autonomously. |
+| **[agentsview](https://github.com/wesm/agentsview)** [![stars](https://img.shields.io/github/stars/wesm/agentsview?style=flat-square&color=blue&label=)](https://github.com/wesm/agentsview) | Fast local coding agent session viewer for Claude, Codex, and Gemini. Analytics dashboard and full text search across all sessions. |
+| **[msgvault](https://github.com/wesm/msgvault)** [![stars](https://img.shields.io/github/stars/wesm/msgvault?style=flat-square&color=blue&label=)](https://github.com/wesm/msgvault) | Archive a lifetime of email and chat locally. Full Gmail backup with search, DuckDB-powered analytics, an interactive TUI, and an MCP server for AI queries -- all entirely offline. |
+| **[Spicy Takes](https://spicytakes.org)** | 20+ prolific tech writers (Paul Graham, Martin Fowler, and others) analyzed by LLMs. Every post gets a TL;DR, quotations, and a spiciness rating. |
+| **[Positron](https://github.com/posit-dev/positron)** [![stars](https://img.shields.io/github/stars/posit-dev/positron?style=flat-square&color=blue&label=)](https://github.com/posit-dev/positron) | A next-generation data science IDE built on VS Code, supporting Python and R. |
 
 ---
 
