@@ -12,7 +12,7 @@ Principal Architect at [Posit](https://posit.co) · GP at [Composed Ventures](ht
 <tr>
 <td><b><a href="https://roborev.io">roborev</a></b></td>
 <td><a href="https://github.com/roborev-dev/roborev"><img src="https://img.shields.io/github/stars/roborev-dev/roborev?style=flat-square&color=blue&label=" alt="stars"></a></td>
-<td>Continuous code review for AI coding agents. Reviews every commit via git hooks, catches issues while context is fresh, and can fix them autonomously.</td>
+<td>Continuous code review for AI coding agents. Runs in the background, reviews every commit as agents write, and surfaces issues in seconds — before they compound.</td>
 </tr>
 <tr>
 <td><b><a href="https://github.com/wesm/agentsview">agentsview</a></b></td>
