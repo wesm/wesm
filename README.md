@@ -1,18 +1,25 @@
-I created [pandas](https://github.com/pandas-dev/pandas) and co-created [Apache Arrow](https://github.com/apache/arrow) and [Ibis](https://github.com/ibis-project/ibis).
+<picture>
+  <img src="hero.svg" alt="Wes McKinney — Creator of pandas, Co-creator of Apache Arrow and Ibis" width="800">
+</picture>
 
-Principal Architect at [Posit](https://posit.co) · GP at [Composed Ventures](https://composed.vc) · [Apache Member](https://apache.org) · [Blog](https://wesmckinney.com/archives.html) · Previously: Two Sigma, Cloudera, DataPad
+---
 
 #### What I'm working on
 
 <table>
 <thead>
-<tr><th width="220">Project</th><th width="70">Stars</th><th>Description</th></tr>
+<tr><th width="190">Project</th><th width="70">Stars</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
 <td><b><a href="https://roborev.io">roborev</a></b></td>
 <td><a href="https://github.com/roborev-dev/roborev"><img src="https://img.shields.io/github/stars/roborev-dev/roborev?style=flat-square&color=blue&label=" alt="stars"></a></td>
 <td>Continuous code review for AI coding agents. Runs in the background, reviews every commit as agents write, and surfaces issues in seconds — before they compound.</td>
+</tr>
+<tr>
+<td><b><a href="https://github.com/wesm/middleman">middleman</a></b></td>
+<td><a href="https://github.com/wesm/middleman"><img src="https://img.shields.io/github/stars/wesm/middleman?style=flat-square&color=blue&label=" alt="stars"></a></td>
+<td>Local-first GitHub dashboard for maintainers to triage, review, and merge PRs and issues across repos.</td>
 </tr>
 <tr>
 <td><b><a href="https://github.com/wesm/agentsview">agentsview</a></b></td>
@@ -22,7 +29,7 @@ Principal Architect at [Posit](https://posit.co) · GP at [Composed Ventures](ht
 <tr>
 <td><b><a href="https://github.com/wesm/msgvault">msgvault</a></b></td>
 <td><a href="https://github.com/wesm/msgvault"><img src="https://img.shields.io/github/stars/wesm/msgvault?style=flat-square&color=blue&label=" alt="stars"></a></td>
-<td>Archive a lifetime of email and chat locally. Full Gmail backup with search, DuckDB-powered analytics, an interactive TUI, and an MCP server for AI queries -- all entirely offline.</td>
+<td>Archive a lifetime of email and chat locally. Full Gmail backup with search, DuckDB-powered analytics, an interactive TUI, and an MCP server for AI queries — all entirely offline.</td>
 </tr>
 <tr>
 <td><b><a href="https://spicytakes.org">Spicy Takes</a></b></td>
@@ -58,7 +65,7 @@ Principal Architect at [Posit](https://posit.co) · GP at [Composed Ventures](ht
   <img src="python-for-data-analysis-3rd-ed.png" alt="Python for Data Analysis 3rd Edition" width="120" align="left">
 </a>
 
-My book [Python for Data Analysis](https://amzn.to/3DyLaJc) is the most widely used introduction to the Python data stack -- pandas, NumPy, IPython, Jupyter. Now in its 3rd edition.
+My book [Python for Data Analysis](https://amzn.to/3DyLaJc) is the most widely used introduction to the Python data stack — pandas, NumPy, IPython, Jupyter. Now in its 3rd edition.
 
 <br clear="left">
 
