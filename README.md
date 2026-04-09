@@ -15,6 +15,11 @@ Principal Architect at [Posit](https://posit.co) · GP at [Composed Ventures](ht
 <td>Continuous code review for AI coding agents. Runs in the background, reviews every commit as agents write, and surfaces issues in seconds — before they compound.</td>
 </tr>
 <tr>
+<td><b><a href="https://github.com/wesm/middleman">middleman</a></b></td>
+<td><a href="https://github.com/wesm/middleman"><img src="https://img.shields.io/github/stars/wesm/middleman?style=flat-square&color=blue&label=" alt="stars"></a></td>
+<td>Local-first GitHub dashboard for maintainers to triage, review, and merge PRs and issues across repos.</td>
+</tr>
+<tr>
 <td><b><a href="https://github.com/wesm/agentsview">agentsview</a></b></td>
 <td><a href="https://github.com/wesm/agentsview"><img src="https://img.shields.io/github/stars/wesm/agentsview?style=flat-square&color=blue&label=" alt="stars"></a></td>
 <td>Fast local coding agent session viewer for Claude, Codex, and Gemini. Analytics dashboard and full text search across all sessions.</td>
