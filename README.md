@@ -22,12 +22,22 @@ Principal Architect at [Posit](https://posit.co) · GP at [Composed Ventures](ht
 <tr>
 <td><b><a href="https://github.com/wesm/agentsview">agentsview</a></b></td>
 <td><a href="https://github.com/wesm/agentsview"><img src="https://img.shields.io/github/stars/wesm/agentsview?style=flat-square&color=blue&label=" alt="stars"></a></td>
-<td>Fast local coding agent session viewer for Claude, Codex, and Gemini. Analytics dashboard and full text search across all sessions.</td>
+<td>100x faster replacement for ccusage. Local coding agent session viewer for Claude, Codex, and Gemini with analytics dashboard and full text search.</td>
+</tr>
+<tr>
+<td><b><a href="https://github.com/wesm/vibepulse">VibePulse</a></b></td>
+<td><a href="https://github.com/wesm/vibepulse"><img src="https://img.shields.io/github/stars/wesm/vibepulse?style=flat-square&color=blue&label=" alt="stars"></a></td>
+<td>Simple macOS menubar app to monitor your Claude Code and Codex token consumption.</td>
 </tr>
 <tr>
 <td><b><a href="https://github.com/wesm/msgvault">msgvault</a></b></td>
 <td><a href="https://github.com/wesm/msgvault"><img src="https://img.shields.io/github/stars/wesm/msgvault?style=flat-square&color=blue&label=" alt="stars"></a></td>
 <td>Archive a lifetime of email and chat locally. Full Gmail backup with search, DuckDB-powered analytics, an interactive TUI, and an MCP server for AI queries -- all entirely offline.</td>
+</tr>
+<tr>
+<td><b><a href="https://moneyflow.dev">moneyflow</a></b></td>
+<td><a href="https://github.com/wesm/moneyflow"><img src="https://img.shields.io/github/stars/wesm/moneyflow?style=flat-square&color=blue&label=" alt="stars"></a></td>
+<td>Personal finance data interface for power users, supporting backends like Monarch Money and YNAB.</td>
 </tr>
 <tr>
 <td><b><a href="https://spicytakes.org">Spicy Takes</a></b></td>
@@ -41,26 +51,30 @@ Principal Architect at [Posit](https://posit.co) · GP at [Composed Ventures](ht
 
 <table>
 <thead>
-<tr><th width="220">Project</th><th width="70">Stars</th><th>Description</th></tr>
+<tr><th width="220">Project</th><th width="100">Role</th><th width="70">Stars</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
 <td><b><a href="https://github.com/posit-dev/positron">Positron</a></b></td>
+<td>Principal Architect</td>
 <td><a href="https://github.com/posit-dev/positron"><img src="https://img.shields.io/github/stars/posit-dev/positron?style=flat-square&color=blue&label=" alt="stars"></a></td>
 <td>A next-generation data science IDE built on VS Code, supporting Python and R.</td>
 </tr>
 <tr>
 <td><b><a href="https://github.com/pandas-dev/pandas">pandas</a></b></td>
+<td>Creator</td>
 <td><a href="https://github.com/pandas-dev/pandas"><img src="https://img.shields.io/github/stars/pandas-dev/pandas?style=flat-square&color=blue&label=" alt="stars"></a></td>
 <td>The most widely used data analysis library in Python.</td>
 </tr>
 <tr>
 <td><b><a href="https://github.com/apache/arrow">Apache Arrow</a></b></td>
+<td>Co-creator</td>
 <td><a href="https://github.com/apache/arrow"><img src="https://img.shields.io/github/stars/apache/arrow?style=flat-square&color=blue&label=" alt="stars"></a></td>
 <td>Language-independent columnar memory format for analytics.</td>
 </tr>
 <tr>
 <td><b><a href="https://github.com/ibis-project/ibis">Ibis</a></b></td>
+<td>Creator</td>
 <td><a href="https://github.com/ibis-project/ibis"><img src="https://img.shields.io/github/stars/ibis-project/ibis?style=flat-square&color=blue&label=" alt="stars"></a></td>
 <td>Portable Python dataframe API for any backend.</td>
 </tr>
