@@ -34,6 +34,16 @@ Principal Architect at [Posit](https://posit.co) · GP at [Composed Ventures](ht
 <td><a href="https://github.com/wesm/spicytakes.org"><img src="https://img.shields.io/github/stars/wesm/spicytakes.org?style=flat-square&color=blue&label=" alt="stars"></a></td>
 <td>20+ prolific tech writers (Paul Graham, Martin Fowler, and others) analyzed by LLMs. Every post gets a TL;DR, quotations, and a spiciness rating.</td>
 </tr>
+</tbody>
+</table>
+
+#### Major past projects (created or less active now)
+
+<table>
+<thead>
+<tr><th width="220">Project</th><th width="70">Stars</th><th>Description</th></tr>
+</thead>
+<tbody>
 <tr>
 <td><b><a href="https://github.com/posit-dev/positron">Positron</a></b></td>
 <td><a href="https://github.com/posit-dev/positron"><img src="https://img.shields.io/github/stars/posit-dev/positron?style=flat-square&color=blue&label=" alt="stars"></a></td>
