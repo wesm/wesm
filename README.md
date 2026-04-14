@@ -22,7 +22,7 @@ Principal Architect at [Posit](https://posit.co) · GP at [Composed Ventures](ht
 <tr>
 <td><b><a href="https://github.com/wesm/agentsview">agentsview</a></b></td>
 <td><a href="https://github.com/wesm/agentsview"><img src="https://img.shields.io/github/stars/wesm/agentsview?style=flat-square&color=blue&label=" alt="stars"></a></td>
-<td>100x faster replacement for ccusage. Local coding agent session viewer for Claude, Codex, and Gemini with analytics dashboard and full text search.</td>
+<td>Local coding agent session viewer for Claude, Codex, and Gemini with analytics dashboard and full text search. <code>agentsview usage</code> is also a 100x faster replacement for ccusage.</td>
 </tr>
 <tr>
 <td><b><a href="https://github.com/wesm/msgvault">msgvault</a></b></td>
