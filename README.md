@@ -25,11 +25,6 @@ Principal Architect at [Posit](https://posit.co) · GP at [Composed Ventures](ht
 <td>100x faster replacement for ccusage. Local coding agent session viewer for Claude, Codex, and Gemini with analytics dashboard and full text search.</td>
 </tr>
 <tr>
-<td><b><a href="https://github.com/wesm/vibepulse">VibePulse</a></b></td>
-<td><a href="https://github.com/wesm/vibepulse"><img src="https://img.shields.io/github/stars/wesm/vibepulse?style=flat-square&color=blue&label=" alt="stars"></a></td>
-<td>Simple macOS menubar app to monitor your Claude Code and Codex token consumption.</td>
-</tr>
-<tr>
 <td><b><a href="https://github.com/wesm/msgvault">msgvault</a></b></td>
 <td><a href="https://github.com/wesm/msgvault"><img src="https://img.shields.io/github/stars/wesm/msgvault?style=flat-square&color=blue&label=" alt="stars"></a></td>
 <td>Archive a lifetime of email and chat locally. Full Gmail backup with search, DuckDB-powered analytics, an interactive TUI, and an MCP server for AI queries -- all entirely offline.</td>
@@ -43,6 +38,11 @@ Principal Architect at [Posit](https://posit.co) · GP at [Composed Ventures](ht
 <td><b><a href="https://spicytakes.org">Spicy Takes</a></b></td>
 <td><a href="https://github.com/wesm/spicytakes.org"><img src="https://img.shields.io/github/stars/wesm/spicytakes.org?style=flat-square&color=blue&label=" alt="stars"></a></td>
 <td>20+ prolific tech writers (Paul Graham, Martin Fowler, and others) analyzed by LLMs. Every post gets a TL;DR, quotations, and a spiciness rating.</td>
+</tr>
+<tr>
+<td><b><a href="https://github.com/wesm/vibepulse">VibePulse</a></b></td>
+<td><a href="https://github.com/wesm/vibepulse"><img src="https://img.shields.io/github/stars/wesm/vibepulse?style=flat-square&color=blue&label=" alt="stars"></a></td>
+<td>Simple macOS menubar app to monitor your Claude Code and Codex token consumption.</td>
 </tr>
 </tbody>
 </table>
