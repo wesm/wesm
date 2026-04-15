@@ -56,7 +56,7 @@ Principal Architect at [Posit](https://posit.co) · GP at [Composed Ventures](ht
 <tbody>
 <tr>
 <td><b><a href="https://github.com/posit-dev/positron">Positron</a></b></td>
-<td>Principal Architect</td>
+<td>Contributor</td>
 <td><a href="https://github.com/posit-dev/positron"><img src="https://img.shields.io/github/stars/posit-dev/positron?style=flat-square&color=blue&label=" alt="stars"></a></td>
 <td>A next-generation data science IDE built on VS Code, supporting Python and R.</td>
 </tr>
