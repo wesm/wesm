@@ -44,6 +44,11 @@ Principal Architect at [Posit](https://posit.co) · GP at [Composed Ventures](ht
 <td><a href="https://github.com/wesm/vibepulse"><img src="https://img.shields.io/github/stars/wesm/vibepulse?style=flat-square&color=blue&label=" alt="stars"></a></td>
 <td>Simple macOS menubar app to monitor your Claude Code and Codex token consumption.</td>
 </tr>
+<tr>
+<td><b><a href="https://github.com/wesm/kata">kata</a></b></td>
+<td><a href="https://github.com/wesm/kata"><img src="https://img.shields.io/github/stars/wesm/kata?style=flat-square&color=blue&label=" alt="stars"></a></td>
+<td>Local-first issue tracking for AI-assisted software work, with an agent-friendly CLI and human-facing TUI.</td>
+</tr>
 </tbody>
 </table>
 
