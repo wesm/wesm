@@ -1,6 +1,6 @@
 I created [pandas](https://github.com/pandas-dev/pandas) and co-created [Apache Arrow](https://github.com/apache/arrow) and [Ibis](https://github.com/ibis-project/ibis).
 
-Founder at [Kenn Software](https://kenn.io) · Part-time: GP at [Composed Ventures](https://composed.vc), AI and Python at [Posit](https://posit.co) · [Apache Member](https://apache.org) · [Blog](https://wesmckinney.com/archives.html) · Previously: Two Sigma, Cloudera, DataPad
+Founder at [Kenn Software](https://kenn.io) · Part-time: GP at [Composed Ventures](https://composed.vc), Principal Architect and AI at [Posit](https://posit.co) · [Apache Member](https://apache.org) · [Blog](https://wesmckinney.com/archives.html) · Previously: Two Sigma, Cloudera, DataPad
 
 #### What I'm working on
 
