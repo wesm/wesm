@@ -29,7 +29,7 @@ Founder at [Kenn Software](https://kenn.io) · Part-time: GP at [Composed Ventur
 <tr>
 <td><b><a href="https://msgvault.io">msgvault</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
 <td><a href="https://github.com/kenn-io/msgvault"><img src="https://img.shields.io/github/stars/kenn-io/msgvault?style=flat-square&color=blue&label=" alt="stars"></a></td>
-<td>Archive a lifetime of email and chat locally. Full Gmail backup with search, DuckDB-powered analytics, an interactive TUI, and an MCP server for AI queries -- all entirely offline.</td>
+<td>Archive a lifetime of email and chat locally. Full Gmail backup with search, DuckDB-powered analytics, a web UI, an interactive TUI, and an MCP server for AI queries -- all entirely offline.</td>
 </tr>
 <tr>
 <td><b><a href="https://forge.kenn.io">Kenn Forge</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
@@ -39,7 +39,7 @@ Founder at [Kenn Software](https://kenn.io) · Part-time: GP at [Composed Ventur
 <tr>
 <td><b><a href="https://katatracker.com">kata</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
 <td><a href="https://github.com/kenn-io/kata"><img src="https://img.shields.io/github/stars/kenn-io/kata?style=flat-square&color=blue&label=" alt="stars"></a></td>
-<td>Local-first issue tracking for AI-assisted software work, with an agent-friendly CLI and human-facing TUI.</td>
+<td>Local-first issue tracking for AI-assisted software work, with an agent-friendly CLI and human-facing terminal and web UIs.</td>
 </tr>
 <tr>
 <td><b><a href="https://docbank.ai">docbank</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
