@@ -4,30 +4,57 @@ Founder at [Kenn Software](https://kenn.io) · Part-time: GP at [Composed Ventur
 
 #### What I'm working on
 
+<img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"> marks a [Kenn Software](https://kenn.io) project.
+
 <table>
 <thead>
-<tr><th width="220">Project</th><th width="70">Stars</th><th>Description</th></tr>
+<tr><th width="240">Project</th><th width="70">Stars</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
-<td><b><a href="https://roborev.io">roborev</a></b></td>
-<td><a href="https://github.com/roborev-dev/roborev"><img src="https://img.shields.io/github/stars/roborev-dev/roborev?style=flat-square&color=blue&label=" alt="stars"></a></td>
+<td><b><a href="https://agentsview.io">AgentsView</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
+<td><a href="https://github.com/kenn-io/agentsview"><img src="https://img.shields.io/github/stars/kenn-io/agentsview?style=flat-square&color=blue&label=" alt="stars"></a></td>
+<td>Local-first session search, analytics, and token intelligence across 20+ coding agents. <code>agentsview usage</code> is also a 100x faster replacement for ccusage.</td>
+</tr>
+<tr>
+<td><b><a href="https://roborev.io">roborev</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
+<td><a href="https://github.com/kenn-io/roborev"><img src="https://img.shields.io/github/stars/kenn-io/roborev?style=flat-square&color=blue&label=" alt="stars"></a></td>
 <td>Continuous code review for AI coding agents. Runs in the background, reviews every commit as agents write, and surfaces issues in seconds — before they compound.</td>
 </tr>
 <tr>
-<td><b><a href="https://github.com/wesm/middleman">middleman</a></b></td>
-<td><a href="https://github.com/wesm/middleman"><img src="https://img.shields.io/github/stars/wesm/middleman?style=flat-square&color=blue&label=" alt="stars"></a></td>
-<td>Local-first GitHub dashboard for maintainers to triage, review, and merge PRs and issues across repos.</td>
+<td><b><a href="https://ghosthub.ai">Ghosthub</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
+<td><a href="https://github.com/kenn-io/ghosthub"><img src="https://img.shields.io/github/stars/kenn-io/ghosthub?style=flat-square&color=blue&label=" alt="stars"></a></td>
+<td>A libghostty-based native macOS terminal for your tmux fleet, with Git worktree management and GitHub pull request import.</td>
 </tr>
 <tr>
-<td><b><a href="https://github.com/wesm/agentsview">agentsview</a></b></td>
-<td><a href="https://github.com/wesm/agentsview"><img src="https://img.shields.io/github/stars/wesm/agentsview?style=flat-square&color=blue&label=" alt="stars"></a></td>
-<td>Local coding agent session viewer for Claude, Codex, and Gemini with analytics dashboard and full text search. <code>agentsview usage</code> is also a 100x faster replacement for ccusage.</td>
-</tr>
-<tr>
-<td><b><a href="https://github.com/wesm/msgvault">msgvault</a></b></td>
-<td><a href="https://github.com/wesm/msgvault"><img src="https://img.shields.io/github/stars/wesm/msgvault?style=flat-square&color=blue&label=" alt="stars"></a></td>
+<td><b><a href="https://msgvault.io">msgvault</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
+<td><a href="https://github.com/kenn-io/msgvault"><img src="https://img.shields.io/github/stars/kenn-io/msgvault?style=flat-square&color=blue&label=" alt="stars"></a></td>
 <td>Archive a lifetime of email and chat locally. Full Gmail backup with search, DuckDB-powered analytics, an interactive TUI, and an MCP server for AI queries -- all entirely offline.</td>
+</tr>
+<tr>
+<td><b><a href="https://forge.kenn.io">Kenn Forge</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
+<td><a href="https://github.com/kenn-io/forge"><img src="https://img.shields.io/github/stars/kenn-io/forge?style=flat-square&color=blue&label=" alt="stars"></a></td>
+<td>Local-first maintainer console with built-in agent workspaces: triage PRs, issues, and CI across GitHub, GitLab, Forgejo, and Gitea, then turn any item into a worktree session running your coding agent.</td>
+</tr>
+<tr>
+<td><b><a href="https://katatracker.com">kata</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
+<td><a href="https://github.com/kenn-io/kata"><img src="https://img.shields.io/github/stars/kenn-io/kata?style=flat-square&color=blue&label=" alt="stars"></a></td>
+<td>Local-first issue tracking for AI-assisted software work, with an agent-friendly CLI and human-facing TUI.</td>
+</tr>
+<tr>
+<td><b><a href="https://docbank.ai">docbank</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
+<td><a href="https://github.com/kenn-io/docbank"><img src="https://img.shields.io/github/stars/kenn-io/docbank?style=flat-square&color=blue&label=" alt="stars"></a></td>
+<td>Local-first system of record for documents -- PDFs, images, text files -- for you and your agents.</td>
+</tr>
+<tr>
+<td><b><a href="https://kwt.sh">kwt</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
+<td><a href="https://github.com/kenn-io/kwt"><img src="https://img.shields.io/github/stars/kenn-io/kwt?style=flat-square&color=blue&label=" alt="stars"></a></td>
+<td>Terminal dashboard for managing Git worktrees, with a scriptable CLI for agents working in isolated checkouts with tmux sessions.</td>
+</tr>
+<tr>
+<td><b><a href="https://github.com/kenn-io/vibepulse">VibePulse</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
+<td><a href="https://github.com/kenn-io/vibepulse"><img src="https://img.shields.io/github/stars/kenn-io/vibepulse?style=flat-square&color=blue&label=" alt="stars"></a></td>
+<td>Simple macOS menubar app to monitor your Claude Code and Codex token consumption.</td>
 </tr>
 <tr>
 <td><b><a href="https://moneyflow.dev">moneyflow</a></b></td>
@@ -37,17 +64,7 @@ Founder at [Kenn Software](https://kenn.io) · Part-time: GP at [Composed Ventur
 <tr>
 <td><b><a href="https://spicytakes.org">Spicy Takes</a></b></td>
 <td><a href="https://github.com/wesm/spicytakes.org"><img src="https://img.shields.io/github/stars/wesm/spicytakes.org?style=flat-square&color=blue&label=" alt="stars"></a></td>
-<td>20+ prolific tech writers (Paul Graham, Martin Fowler, and others) analyzed by LLMs. Every post gets a TL;DR, quotations, and a spiciness rating.</td>
-</tr>
-<tr>
-<td><b><a href="https://github.com/wesm/vibepulse">VibePulse</a></b></td>
-<td><a href="https://github.com/wesm/vibepulse"><img src="https://img.shields.io/github/stars/wesm/vibepulse?style=flat-square&color=blue&label=" alt="stars"></a></td>
-<td>Simple macOS menubar app to monitor your Claude Code and Codex token consumption.</td>
-</tr>
-<tr>
-<td><b><a href="https://github.com/wesm/kata">kata</a></b></td>
-<td><a href="https://github.com/wesm/kata"><img src="https://img.shields.io/github/stars/wesm/kata?style=flat-square&color=blue&label=" alt="stars"></a></td>
-<td>Local-first issue tracking for AI-assisted software work, with an agent-friendly CLI and human-facing TUI.</td>
+<td>30+ prolific tech writers (Paul Graham, Martin Fowler, and others) analyzed by LLMs. Every post gets a TL;DR, quotations, and a spiciness rating.</td>
 </tr>
 </tbody>
 </table>
