@@ -63,7 +63,7 @@ Founder at [Kenn Software](https://kenn.io) · Part-time: GP at [Composed Ventur
 </tr>
 <tr>
 <td><b><a href="https://spicytakes.org">Spicy Takes</a></b></td>
-<td><a href="https://github.com/wesm/spicytakes.org"><img src="https://img.shields.io/github/stars/wesm/spicytakes.org?style=flat-square&color=blue&label=" alt="stars"></a></td>
+<td></td>
 <td>30+ prolific tech writers (Paul Graham, Martin Fowler, and others) analyzed by LLMs. Every post gets a TL;DR, quotations, and a spiciness rating.</td>
 </tr>
 </tbody>
