@@ -1,5 +1,5 @@
 <a href="https://kenn.io">
-  <img src="assets/kenn-hero.svg" alt="16-bit Wes McKinney floating in lotus pose, orbited by Kenn Software projects: AgentsView, roborev, Ghosthub, msgvault, Kenn Forge, kata, docbank, kwt, Fotobank, and BenchDB" width="100%">
+  <img src="assets/kenn-hero.svg" alt="16-bit Wes McKinney floating cross-legged in meditation, orbited by Kenn Software projects: AgentsView, roborev, Ghosthub, msgvault, Kenn Forge, kata, Docbank, kwt, Fotobank, and BenchDB" width="100%">
 </a>
 
 I created [pandas](https://github.com/pandas-dev/pandas) and co-created [Apache Arrow](https://github.com/apache/arrow) and [Ibis](https://github.com/ibis-project/ibis).
@@ -18,52 +18,52 @@ Founder at [Kenn Software](https://kenn.io) · Part-time: GP at [Composed Ventur
 <tr>
 <td><b><a href="https://agentsview.io">AgentsView</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
 <td><a href="https://github.com/kenn-io/agentsview"><img src="https://img.shields.io/github/stars/kenn-io/agentsview?style=flat-square&color=blue&label=" alt="stars"></a></td>
-<td>Local-first session search, analytics, and token intelligence across 20+ coding agents. <code>agentsview usage</code> is also a 100x faster replacement for ccusage.</td>
+<td>See what your AI coding agents did and what it cost. One searchable local archive of sessions from more than 60 agent formats, with activity, cost, and quality tracking. <code>agentsview usage</code> is also a 100x faster replacement for ccusage.</td>
 </tr>
 <tr>
 <td><b><a href="https://roborev.io">roborev</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
 <td><a href="https://github.com/kenn-io/roborev"><img src="https://img.shields.io/github/stars/kenn-io/roborev?style=flat-square&color=blue&label=" alt="stars"></a></td>
-<td>Continuous code review for AI coding agents. Runs in the background, reviews every commit as agents write, and surfaces issues in seconds — before they compound.</td>
+<td>Local, continuous code review for the agentic loop. A git hook reviews every commit in the background with the agents you already run, keeps findings open until they are fixed, and hands the fix back to the agent while context is fresh.</td>
 </tr>
 <tr>
 <td><b><a href="https://ghosthub.ai">Ghosthub</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
 <td><a href="https://github.com/kenn-io/ghosthub"><img src="https://img.shields.io/github/stars/kenn-io/ghosthub?style=flat-square&color=blue&label=" alt="stars"></a></td>
-<td>A libghostty-based native macOS terminal for your tmux fleet, with Git worktree management and GitHub pull request import.</td>
+<td>All your multiplexers in one native Mac terminal. Open local and remote tmux, Herdr, and Zellij sessions, reconnect automatically when a connection drops, and use Git worktrees if you want them.</td>
 </tr>
 <tr>
 <td><b><a href="https://msgvault.io">msgvault</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
 <td><a href="https://github.com/kenn-io/msgvault"><img src="https://img.shields.io/github/stars/kenn-io/msgvault?style=flat-square&color=blue&label=" alt="stars"></a></td>
-<td>Archive a lifetime of email and chat locally. Full Gmail backup with search, DuckDB-powered analytics, a web UI, an interactive TUI, and an MCP server for AI queries -- all entirely offline.</td>
+<td>Keep and search your message history. Save email, chats, meetings, calendars, and contacts on your own computer or server, and work from a browser, terminal, or AI assistant.</td>
 </tr>
 <tr>
 <td><b><a href="https://forge.kenn.io">Kenn Forge</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
 <td><a href="https://github.com/kenn-io/forge"><img src="https://img.shields.io/github/stars/kenn-io/forge?style=flat-square&color=blue&label=" alt="stars"></a></td>
-<td>Local-first maintainer console with built-in agent workspaces: triage PRs, issues, and CI across GitHub, GitLab, Forgejo, and Gitea, then turn any item into a worktree session running your coding agent.</td>
+<td>The agent workspace that syncs with your code forge. Runs coding agents in isolated worktree workspaces, with pull requests, issues, and activity from GitHub, GitLab, Forgejo, and Gitea synced locally. Triage, delegate, review, and merge in one console.</td>
 </tr>
 <tr>
 <td><b><a href="https://katatracker.com">kata</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
 <td><a href="https://github.com/kenn-io/kata"><img src="https://img.shields.io/github/stars/kenn-io/kata?style=flat-square&color=blue&label=" alt="stars"></a></td>
-<td>Local-first issue tracking for AI-assisted software work, with an agent-friendly CLI and human-facing terminal and web UIs.</td>
+<td>The issue tracker that runs inside the loop. Local-first issue tracking for coding agents and the humans steering them, answered in milliseconds by a daemon on your own machine.</td>
 </tr>
 <tr>
-<td><b><a href="https://docbank.ai">docbank</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
+<td><b><a href="https://docbank.ai">Docbank</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
 <td><a href="https://github.com/kenn-io/docbank"><img src="https://img.shields.io/github/stars/kenn-io/docbank?style=flat-square&color=blue&label=" alt="stars"></a></td>
-<td>Local-first system of record for documents -- PDFs, images, text files -- for you and your agents.</td>
+<td>Agent-native document system of record. An open-source vault on your machine for files, email, photos, and recordings: search them, keep every version, and export what you reviewed.</td>
 </tr>
 <tr>
 <td><b><a href="https://kwt.sh">kwt</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
 <td><a href="https://github.com/kenn-io/kwt"><img src="https://img.shields.io/github/stars/kenn-io/kwt?style=flat-square&color=blue&label=" alt="stars"></a></td>
-<td>Terminal dashboard for managing Git worktrees, with a scriptable CLI for agents working in isolated checkouts with tmux sessions.</td>
+<td>A Git worktree manager for people and coding agents. One isolated checkout and tmux workspace per branch, a terminal dashboard for people, and a JSON command line for agents.</td>
 </tr>
 <tr>
 <td><b><a href="https://fotobank.ai">Fotobank</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
 <td><a href="https://github.com/kenn-io/fotobank"><img src="https://img.shields.io/github/stars/kenn-io/fotobank?style=flat-square&color=blue&label=" alt="stars"></a></td>
-<td>Photo system of record for people and agents. Preserve originals and edits, organize your library, and automate photo workflows. Built on docbank.</td>
+<td>A photo system of record you control. A self-hosted photo library that keeps originals, related files, and every version together. Built on Docbank; pre-alpha.</td>
 </tr>
 <tr>
 <td><b><a href="https://benchdb.io">BenchDB</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
 <td><a href="https://github.com/kenn-io/benchdb"><img src="https://img.shields.io/github/stars/kenn-io/benchdb?style=flat-square&color=blue&label=" alt="stars"></a></td>
-<td>Continuous performance testing with comparable benchmark histories, fleet-aware trends, and CI regression reports.</td>
+<td>Continuous performance testing with context. Comparable benchmark histories across commits and machines, fleet-aware trends, and CI reports from any benchmark harness.</td>
 </tr>
 <tr>
 <td><b><a href="https://github.com/kenn-io/vibepulse">VibePulse</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
