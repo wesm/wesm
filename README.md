@@ -1,3 +1,7 @@
+<a href="https://kenn.io">
+  <img src="assets/kenn-hero.svg" alt="16-bit Wes McKinney floating in lotus pose, orbited by Kenn Software projects: AgentsView, roborev, Ghosthub, msgvault, Kenn Forge, kata, docbank, kwt, Fotobank, and BenchDB" width="100%">
+</a>
+
 I created [pandas](https://github.com/pandas-dev/pandas) and co-created [Apache Arrow](https://github.com/apache/arrow) and [Ibis](https://github.com/ibis-project/ibis).
 
 Founder at [Kenn Software](https://kenn.io) · Part-time: GP at [Composed Ventures](https://composed.vc), Principal Architect and AI at [Posit](https://posit.co) · [Apache Member](https://apache.org) · [Blog](https://wesmckinney.com/archives.html) · Previously: Two Sigma, Cloudera, DataPad
@@ -50,6 +54,16 @@ Founder at [Kenn Software](https://kenn.io) · Part-time: GP at [Composed Ventur
 <td><b><a href="https://kwt.sh">kwt</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
 <td><a href="https://github.com/kenn-io/kwt"><img src="https://img.shields.io/github/stars/kenn-io/kwt?style=flat-square&color=blue&label=" alt="stars"></a></td>
 <td>Terminal dashboard for managing Git worktrees, with a scriptable CLI for agents working in isolated checkouts with tmux sessions.</td>
+</tr>
+<tr>
+<td><b><a href="https://fotobank.ai">Fotobank</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
+<td><a href="https://github.com/kenn-io/fotobank"><img src="https://img.shields.io/github/stars/kenn-io/fotobank?style=flat-square&color=blue&label=" alt="stars"></a></td>
+<td>Photo system of record for people and agents. Preserve originals and edits, organize your library, and automate photo workflows. Built on docbank.</td>
+</tr>
+<tr>
+<td><b><a href="https://benchdb.io">BenchDB</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
+<td><a href="https://github.com/kenn-io/benchdb"><img src="https://img.shields.io/github/stars/kenn-io/benchdb?style=flat-square&color=blue&label=" alt="stars"></a></td>
+<td>Continuous performance testing with comparable benchmark histories, fleet-aware trends, and CI regression reports.</td>
 </tr>
 <tr>
 <td><b><a href="https://github.com/kenn-io/vibepulse">VibePulse</a></b> <a href="https://kenn.io"><img src="https://img.shields.io/badge/Kenn-2C2416?style=flat-square" alt="Kenn"></a></td>
