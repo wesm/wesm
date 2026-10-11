@@ -11,6 +11,8 @@ shaded as rounded volumes, and reduced to the same grid.
 Usage: uv run scripts/build_hero.py
 """
 
+import base64
+import io
 from collections import deque
 from collections.abc import Callable
 from html import escape
@@ -29,6 +31,8 @@ SPRITE_W, SPRITE_H = 112, 108
 CX = SPRITE_W // 2
 HEAD_DX, HEAD_DY = CX - 27, 2
 PX = 3
+UPSCALE = 6
+LASH = "#9a4d1e"
 # Avatar-grid box around the eyes, used for the blink animation.
 EYE_ROWS, EYE_COLS = range(21, 23), range(20, 35)
 
@@ -292,39 +296,32 @@ def build_sprite() -> tuple[np.ndarray, list[tuple[int, int]]]:
     return canvas.astype(np.uint8), eyes
 
 
-def sprite_paths(canvas: np.ndarray) -> str:
-    """Encode opaque pixels as one path per color, merging horizontal runs."""
-    runs: dict[str, list[str]] = {}
-    for y in range(canvas.shape[0]):
-        x = 0
-        while x < canvas.shape[1]:
-            if canvas[y, x, 3] == 0:
-                x += 1
-                continue
-            color = rgbhex(canvas[y, x])
-            start = x
-            while (
-                x < canvas.shape[1]
-                and canvas[y, x, 3]
-                and (canvas[y, x, :3] == canvas[y, start, :3]).all()
-            ):
-                x += 1
-            runs.setdefault(color, []).append(f"M{start} {y}h{x - start}v1h-{x - start}z")
-    return "".join(f'<path fill="{c}" d="{"".join(d)}"/>' for c, d in sorted(runs.items()))
+def sprite_image(pixels: np.ndarray, css_class: str = "") -> str:
+    """Embed RGBA pixels as one PNG, pre-scaled with nearest neighbor so edges stay hard.
+
+    A single image avoids the hairline seams that browsers draw between adjacent
+    vector rectangles when the SVG is scaled.
+    """
+    img = Image.fromarray(pixels)
+    img = img.resize((img.width * UPSCALE, img.height * UPSCALE), Image.Resampling.NEAREST)
+    buf = io.BytesIO()
+    img.save(buf, format="PNG", optimize=True)
+    data = base64.b64encode(buf.getvalue()).decode("ascii")
+    cls = f' class="{css_class}"' if css_class else ""
+    return (
+        f'<image{cls} width="{pixels.shape[1]}" height="{pixels.shape[0]}" '
+        f'style="image-rendering:pixelated" href="data:image/png;base64,{data}"/>'
+    )
 
 
 def eyelids(canvas: np.ndarray, eyes: list[tuple[int, int]]) -> str:
     """Closed-eye pixels (skin with a dark lash line), shown briefly by the blink animation."""
     lash_row = max(y for y, _ in eyes)
-    lash = "".join(f"M{x} {y}h1v1h-1z" for y, x in eyes if y == lash_row)
-    skin = rgbhex(canvas[lash_row + 2, eyes[0][1]])
-    lid = "".join(f"M{x} {y}h1v1h-1z" for y, x in eyes if y != lash_row)
-    return f'<g class="lid"><path fill="{skin}" d="{lid}"/><path fill="#9a4d1e" d="{lash}"/></g>'
-
-
-def rgbhex(rgb: np.ndarray) -> str:
-    r, g, b = (int(v) for v in rgb[:3])
-    return f"#{r:02x}{g:02x}{b:02x}"
+    skin = canvas[lash_row + 2, eyes[0][1], :3]
+    lids = np.zeros_like(canvas)
+    for y, x in eyes:
+        lids[y, x] = (*(hexrgb(LASH) if y == lash_row else skin), 255)
+    return sprite_image(lids, "lid")
 
 
 def connector_end(node: tuple[int, int]) -> tuple[float, float]:
@@ -494,8 +491,8 @@ def center_piece(canvas: np.ndarray, eyes: list[tuple[int, int]]) -> str:
 <circle class="ring ring-b" cx="{cx}" cy="{cy}" r="{RING_R - 26}"/>
 <ellipse class="shadow" cx="{cx}" cy="{shadow_y}" rx="150" ry="14" fill="url(#shadow)"/>
 <g class="float">
-  <g transform="translate({sx} {sy}) scale({PX})" shape-rendering="crispEdges">
-    {sprite_paths(canvas)}
+  <g transform="translate({sx} {sy}) scale({PX})">
+    {sprite_image(canvas)}
     {eyelids(canvas, eyes)}
   </g>
 </g>"""
