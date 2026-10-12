@@ -55,13 +55,12 @@ PROJECTS = [
     ("kata", "the issue tracker inside the loop"),
     ("Docbank", "agent-native document vault"),
     ("kwt", "Git worktrees for people and agents"),
-    ("Fotobank", "photo system of record you control"),
     ("BenchDB", "performance results, in context"),
 ]
 
 VIEW_W, VIEW_H = 1200, 660
 CENTER = (600, 364)
-ROW_Y = [196, 280, 364, 448, 532]
+ROW_GAP = 84
 NODE_X = (380, 820)
 RING_R = 200
 
@@ -175,11 +174,17 @@ def connector_end(node: tuple[int, int]) -> tuple[float, float]:
     return cx + dx / dist * RING_R, cy + dy / dist * RING_R
 
 
+def row_y(side: int, row: int) -> int:
+    """Rows alternate left and right; each column is centered on the sprite."""
+    count = len(PROJECTS[side::2])
+    return round(CENTER[1] + (row - (count - 1) / 2) * ROW_GAP)
+
+
 def project_nodes() -> str:
     parts = []
     for i, (name, tagline) in enumerate(PROJECTS):
         side = i % 2
-        row = ROW_Y[i // 2]
+        row = row_y(side, i // 2)
         nx = NODE_X[side]
         rx, ry = connector_end((nx, row))
         delay = f"animation-delay:{i * 0.55:.2f}s"

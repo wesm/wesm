@@ -1,5 +1,5 @@
 <a href="https://kenn.io">
-  <img src="assets/kenn-hero.svg" alt="16-bit Wes McKinney floating in lotus pose, orbited by Kenn Software projects: AgentsView, roborev, Ghosthub, msgvault, Kenn Forge, kata, Docbank, kwt, Fotobank, and BenchDB" width="100%">
+  <img src="assets/kenn-hero.svg" alt="16-bit Wes McKinney floating in lotus pose, orbited by Kenn Software projects: AgentsView, roborev, Ghosthub, msgvault, Kenn Forge, kata, Docbank, kwt, and BenchDB" width="100%">
 </a>
 
 I created [pandas](https://github.com/pandas-dev/pandas), co-created [Apache Arrow](https://github.com/apache/arrow) and [Ibis](https://github.com/ibis-project/ibis), and wrote [Python for Data Analysis](https://amzn.to/3DyLaJc).
