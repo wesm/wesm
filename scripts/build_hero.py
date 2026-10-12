@@ -1,12 +1,11 @@
 # /// script
 # requires-python = ">=3.13"
-# dependencies = ["pillow==12.3.0", "numpy==2.5.3", "scipy==1.18.1"]
+# dependencies = ["pillow==12.3.0", "numpy==2.5.3"]
 # ///
-"""Render assets/kenn-hero.svg: a meditating pixel-art sprite orbited by Kenn projects.
+"""Render assets/kenn-hero.svg: a meditating pixel-art Wes orbited by Kenn projects.
 
-The head comes from assets/avatar.png (the 16-bit GitHub avatar), resampled onto its
-native pixel grid at half resolution. The body is modeled as layered smooth shapes,
-shaded as rounded volumes, and reduced to the same grid.
+The figure comes from assets/wes-lotus.png, a 16-bit style illustration on a flat
+backdrop. It is resampled onto its own pixel grid, cut out, and embedded as one PNG.
 
 Usage: uv run scripts/build_hero.py
 """
@@ -14,37 +13,30 @@ Usage: uv run scripts/build_hero.py
 import base64
 import io
 from collections import deque
-from collections.abc import Callable
+from collections.abc import Iterator
 from html import escape
 from pathlib import Path
 
 import numpy as np
-from PIL import Image, ImageDraw
-from scipy import ndimage
+from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
-AVATAR = ROOT / "assets" / "avatar.png"
+SOURCE = ROOT / "assets" / "wes-lotus.png"
 OUTPUT = ROOT / "assets" / "kenn-hero.svg"
 
-AVATAR_PITCH = 4.24 * 2
-SPRITE_W, SPRITE_H = 112, 108
-CX = SPRITE_W // 2
-HEAD_DX, HEAD_DY = CX - 27, 2
-PX = 3
-UPSCALE = 6
-LASH = "#9a4d1e"
-# Avatar-grid box around the eyes, used for the blink animation.
-EYE_ROWS, EYE_COLS = range(21, 23), range(20, 35)
-
-# Body parts are drawn at SUPER times the sprite grid, shaded as domes lit from the upper
-# left, then reduced to the grid. Ramps run from outline to highlight.
-SUPER = 4
-LIGHT = np.array([-0.5, -0.8, 0.75]) / np.linalg.norm([-0.5, -0.8, 0.75])
-AMBIENT = 0.25
-SKIN = ("#7e3c14", "#bd6a2e", "#da8b4c", "#f0a866", "#fbc282", "#fdd6a2")
-TEE = ("#262833", "#3f4250", "#515465", "#626575", "#747786", "#8a8c99")
-PANTS = ("#0c1019", "#1b2333", "#263045", "#323e57", "#41506d", "#556685")
-PANTS_FRONT = ("#0f1420", "#222c40", "#2e3a53", "#3b4967", "#4c5d7f", "#61749a")
+# Source pixels per art pixel, measured from the illustration.
+SOURCE_PITCH = 6.2
+# RGB distance from the backdrop color within which a pixel counts as backdrop.
+BACKDROP_TOLERANCE = 40
+# Bluish outline pixels this close to the backdrop are antialiasing blend, not figure.
+FRINGE_TOLERANCE = 70
+# Smaller backdrop-colored regions are kept; they are details such as eye pixels.
+MIN_BACKDROP_REGION = 8
+# Art-grid box around the eyes, used for the blink animation.
+EYE_ROWS, EYE_COLS = range(32, 35), range(88, 111)
+LASH = "#7c330d"
+SPRITE_HEIGHT = 330
+UPSCALE = 4
 
 # Colors from the kenn.io site theme.
 BG, BG_SOFT = "#0a0e14", "#0c1117"
@@ -78,222 +70,84 @@ def hexrgb(color: str) -> np.ndarray:
     return np.array([int(color[i : i + 2], 16) for i in (1, 3, 5)])
 
 
-def sample_avatar(path: Path) -> np.ndarray:
-    """Resample the avatar onto its pixel grid, taking the median of each cell."""
+def sample_grid(path: Path, pitch: float) -> np.ndarray:
+    """Resample an illustration onto its art-pixel grid, taking the median of each cell."""
     im = np.asarray(Image.open(path).convert("RGB")).astype(float)
-    n = int(im.shape[0] / AVATAR_PITCH)
-    out = np.zeros((n, n, 3), int)
-    for j in range(n):
-        for i in range(n):
-            y0, x0 = int(j * AVATAR_PITCH + 1), int(i * AVATAR_PITCH + 1)
-            y1, x1 = int((j + 1) * AVATAR_PITCH), int((i + 1) * AVATAR_PITCH)
-            out[j, i] = np.median(im[y0:y1, x0:x1].reshape(-1, 3), axis=0)
+    ny, nx = int(im.shape[0] / pitch), int(im.shape[1] / pitch)
+    out = np.zeros((ny, nx, 3), int)
+    for j, i in np.ndindex(ny, nx):
+        y0, x0 = int(j * pitch + 1), int(i * pitch + 1)
+        y1, x1 = int((j + 1) * pitch), int((i + 1) * pitch)
+        out[j, i] = np.median(im[y0:y1, x0:x1].reshape(-1, 3), axis=0)
     return out
 
 
-def is_background(c: np.ndarray) -> bool:
-    r, g, b = c
-    return b - r > 35 and g - r > 18
+def neighbors(y: int, x: int, shape: tuple[int, ...]) -> Iterator[tuple[int, int]]:
+    for ny, nx in ((y + 1, x), (y - 1, x), (y, x + 1), (y, x - 1)):
+        if 0 <= ny < shape[0] and 0 <= nx < shape[1]:
+            yield ny, nx
 
 
-def is_skin(c: np.ndarray) -> bool:
-    r, _, b = c
-    return r > 150 and r - b > 60
-
-
-def head_mask(av: np.ndarray, last_row: int) -> np.ndarray:
-    """Flood-fill the blue backdrop from the border; keep everything else."""
-    n = av.shape[0]
-    bg = np.zeros((n, n), bool)
-    edge = [(y, x) for y in range(n) for x in range(n) if y in (0, n - 1) or x in (0, n - 1)]
-    queue = deque(edge)
-    while queue:
-        y, x = queue.popleft()
-        if not (0 <= y < n and 0 <= x < n) or bg[y, x] or not is_background(av[y, x]):
+def large_regions(mask: np.ndarray, min_size: int) -> np.ndarray:
+    """Keep the 4-connected regions of mask that have at least min_size pixels."""
+    seen = np.zeros_like(mask)
+    out = np.zeros_like(mask)
+    for start in zip(*np.nonzero(mask), strict=True):
+        if seen[start]:
             continue
-        bg[y, x] = True
-        queue.extend(((y + 1, x), (y - 1, x), (y, x + 1), (y, x - 1)))
-    keep = ~bg
+        seen[start] = True
+        region, queue = [], deque([start])
+        while queue:
+            y, x = queue.popleft()
+            region.append((y, x))
+            for nb in neighbors(y, x, mask.shape):
+                if mask[nb] and not seen[nb]:
+                    seen[nb] = True
+                    queue.append(nb)
+        if len(region) >= min_size:
+            out[tuple(zip(*region, strict=True))] = True
+    return out
+
+
+def figure_mask(grid: np.ndarray) -> np.ndarray:
+    """Mark everything except the flat backdrop, including gaps enclosed by the arms."""
+    border = np.concatenate([grid[0], grid[-1], grid[:, 0], grid[:, -1]])
+    distance = np.linalg.norm(grid - np.median(border, axis=0), axis=-1)
+    backdrop = large_regions(distance < BACKDROP_TOLERANCE, MIN_BACKDROP_REGION)
+    bluish = (grid[..., 2] > grid[..., 0]) & (distance < FRINGE_TOLERANCE)
     for _ in range(2):
-        fringe = keep & ~(
-            shift(keep, 1, 0) & shift(keep, -1, 0) & shift(keep, 0, 1) & shift(keep, 0, -1)
-        )
-        bluish = av[..., 2] >= av[..., 0] - 10
-        keep &= ~(fringe & bluish)
-    keep[last_row + 1 :] = False
-    return keep
+        padded = np.pad(backdrop, 1)
+        h, w = backdrop.shape
+        touching = np.zeros_like(backdrop)
+        for dy, dx in np.ndindex(3, 3):
+            touching |= padded[dy : dy + h, dx : dx + w]
+        backdrop |= touching & bluish
+    return ~backdrop
 
 
-def shift(m: np.ndarray, dy: int, dx: int) -> np.ndarray:
-    """Return m translated so out[y, x] == m[y - dy, x - dx] (zero-filled)."""
-    out = np.zeros_like(m)
-    h, w = m.shape
-    out[max(dy, 0) : h + min(dy, 0), max(dx, 0) : w + min(dx, 0)] = m[
-        max(-dy, 0) : h + min(-dy, 0), max(-dx, 0) : w + min(-dx, 0)
-    ]
-    return out
+def closed_eyes(grid: np.ndarray, figure: np.ndarray) -> np.ndarray:
+    """Pixels that paint the eyes shut: skin from below each eye, with a lash line."""
+    lids = np.zeros((*grid.shape[:2], 4), np.uint8)
+    lash_row = EYE_ROWS[-1]
+    for y in EYE_ROWS:
+        for x in EYE_COLS:
+            r, _, b = grid[y, x]
+            if figure[y, x] and (b >= r - 20 or r < 0x40):
+                color = hexrgb(LASH) if y == lash_row else grid[lash_row + 2, x]
+                lids[y, x] = (*color, 255)
+    return lids
 
 
-type Shape = Callable[[ImageDraw.ImageDraw], None]
-
-
-def scaled(points) -> list[tuple[float, float]]:
-    return [(x * SUPER, y * SUPER) for x, y in points]
-
-
-def mirrored(points) -> list[tuple[float, float]]:
-    """Close a left-half outline with its reflection across the sprite center."""
-    return list(points) + [(2 * CX - x, y) for x, y in reversed(points)]
-
-
-def poly(points) -> Shape:
-    return lambda d: d.polygon(scaled(points), fill=1)
-
-
-def ellipse(cx: float, cy: float, rx: float, ry: float) -> Shape:
-    return lambda d: d.ellipse(scaled([(cx - rx, cy - ry), (cx + rx, cy + ry)]), fill=1)
-
-
-def limb(p0, p1, w0: float, w1: float | None = None) -> Shape:
-    """Tapered capsule from p0 (width w0) to p1 (width w1)."""
-    w1 = w0 if w1 is None else w1
-    (x0, y0), (x1, y1) = p0, p1
-    length = ((x1 - x0) ** 2 + (y1 - y0) ** 2) ** 0.5
-    nx, ny = (y0 - y1) / length, (x1 - x0) / length
-    side = [(x0 + nx * w0 / 2, y0 + ny * w0 / 2), (x1 + nx * w1 / 2, y1 + ny * w1 / 2),
-            (x1 - nx * w1 / 2, y1 - ny * w1 / 2), (x0 - nx * w0 / 2, y0 - ny * w0 / 2)]  # fmt: skip
-    ends = [ellipse(x, y, w / 2, w / 2) for (x, y), w in ((p0, w0), (p1, w1))]
-    return union(poly(side), *ends)
-
-
-def union(*shapes: Shape) -> Shape:
-    def draw(d: ImageDraw.ImageDraw) -> None:
-        for shape in shapes:
-            shape(d)
-
-    return draw
-
-
-def dome_shade(mask: np.ndarray, radius: float) -> np.ndarray:
-    """Lambert shading of a rounded volume whose edges curve away over `radius` pixels."""
-    r = radius * SUPER
-    d = np.minimum(ndimage.distance_transform_edt(mask), r)
-    height = ndimage.gaussian_filter(np.sqrt(r * r - (r - d) ** 2), 1.5)
-    gy, gx = np.gradient(height)
-    normal = np.stack([-gx, -gy, np.ones_like(gx)], -1)
-    normal /= np.linalg.norm(normal, axis=-1, keepdims=True)
-    return AMBIENT + (1 - AMBIENT) * np.clip(normal @ LIGHT, 0, 1)
-
-
-class Body:
-    """Layered body parts; each part added sits in front of the earlier ones."""
-
-    def __init__(self) -> None:
-        size = (SPRITE_H * SUPER, SPRITE_W * SUPER)
-        self.label = np.zeros(size, int)
-        self.shade = np.zeros(size)
-        self.parts: list[tuple[tuple[str, ...], float]] = [((), 0.0)]
-
-    def add(self, shape: Shape, ramp: tuple[str, ...], radius: float, texture=0.0) -> None:
-        img = Image.new("1", (SPRITE_W * SUPER, SPRITE_H * SUPER), 0)
-        shape(ImageDraw.Draw(img))
-        mask = np.asarray(img).astype(bool)
-        offset = int(1.5 * SUPER)
-        cast = shift(mask, offset, offset // 2) & ~mask & (self.label > 0)
-        self.shade[cast] *= 0.62
-        self.parts.append((ramp, texture))
-        self.label[mask] = len(self.parts) - 1
-        self.shade[mask] = dome_shade(mask, radius)[mask]
-
-    def downsample(self) -> tuple[np.ndarray, np.ndarray]:
-        """Give each sprite pixel its dominant part and that part's mean shade."""
-        labels = np.zeros((SPRITE_H, SPRITE_W), int)
-        shades = np.zeros((SPRITE_H, SPRITE_W))
-        for y, x in np.ndindex(SPRITE_H, SPRITE_W):
-            cell = (slice(y * SUPER, (y + 1) * SUPER), slice(x * SUPER, (x + 1) * SUPER))
-            block = self.label[cell]
-            values, counts = np.unique(block, return_counts=True)
-            order = np.argsort(-counts)
-            top = values[order[0]]
-            if top == 0:
-                if len(order) == 1 or counts[order[0]] > 0.55 * SUPER * SUPER:
-                    continue
-                top = values[order[1]]
-            labels[y, x] = top
-            shades[y, x] = self.shade[cell][block == top].mean()
-        return labels, shades
-
-    def rasterize(self, rng: np.random.Generator) -> np.ndarray:
-        labels, shades = self.downsample()
-        out = np.zeros((SPRITE_H, SPRITE_W, 4), int)
-        for y, x in zip(*np.nonzero(labels), strict=True):
-            ramp, texture = self.parts[labels[y, x]]
-            level = ramp_level(labels, shades, (y, x), rng, texture)
-            out[y, x] = (*hexrgb(ramp[level]), 255)
-        return out
-
-
-def ramp_level(labels, shades, pos, rng, texture: float) -> int:
-    """Pick a ramp step: outline on the silhouette, creases where a nearer part overlaps."""
-    y, x = pos
-    level = int(np.clip(shades[y, x] * 5.2 - 0.4, 1, 5))
-    up, down, left, right = (
-        labels[y + dy, x + dx] if 0 <= y + dy < SPRITE_H and 0 <= x + dx < SPRITE_W else 0
-        for dy, dx in ((-1, 0), (1, 0), (0, -1), (0, 1))
-    )
-    neighbors = (up, down, left, right)
-    if 0 in neighbors:
-        return 0 if down == 0 or right == 0 else max(level - 2, 1)
-    if any(n > labels[y, x] for n in neighbors):
-        return max(level - 2, 0)
-    if texture and rng.random() < texture:
-        return int(np.clip(level + rng.choice((-1, 1)), 1, 5))
-    return level
-
-
-def meditating_body() -> Body:
-    """Cross-legged seat (shins crossed, feet tucked under the knees), hands on the knees."""
-    body = Body()
-    body.add(ellipse(CX, 86, 22, 7), PANTS, 6)  # lap
-    for side in (-1, 1):
-        body.add(limb((CX + side * 10, 86), (CX + side * 41, 90), 13, 12), PANTS, 6)  # thigh
-    body.add(limb((CX - 40, 91), (CX + 27, 99), 10, 8), PANTS, 4.5)  # rear shin
-    body.add(limb((CX + 40, 92), (CX - 27, 100), 10, 8), PANTS_FRONT, 4.5)  # front shin
-    torso = [
-        (CX - 9, 44),
-        (CX - 21, 47),
-        (CX - 25, 53),
-        (CX - 23, 64),
-        (CX - 20, 74),
-        (CX - 22, 81),
-    ]
-    body.add(poly(mirrored(torso)), TEE, 13, texture=0.08)
-    hem = [(CX - 20, 77), (CX - 23, 83), (CX - 10, 85)]
-    body.add(poly(mirrored(hem)), TEE, 3, texture=0.08)
-    body.add(poly([(CX - 7, 44), (CX + 7, 44), (CX, 52)]), SKIN, 3)  # V-neck
-    for side in (-1, 1):
-        body.add(limb((CX + side * 25, 57), (CX + side * 31, 72), 7.5, 7), SKIN, 3.5)
-        sleeve = [(20, 46), (25, 50), (29, 55), (30, 62), (23, 63), (21, 52)]
-        body.add(poly([(CX + side * x, y) for x, y in sleeve]), TEE, 5, texture=0.08)
-        body.add(limb((CX + side * 31, 73), (CX + side * 40, 86), 7, 5.5), SKIN, 3)
-        hand = union(ellipse(CX + side * 43, 88, 4.6, 2.6), ellipse(CX + side * 40, 86.4, 1.6, 1.4))
-        body.add(hand, SKIN, 2)
-    return body
-
-
-def build_sprite() -> tuple[np.ndarray, list[tuple[int, int]]]:
-    """Return the RGBA sprite and the sprite coordinates of the eye pixels."""
-    canvas = meditating_body().rasterize(np.random.default_rng(3))
-    av = sample_avatar(AVATAR)
-    keep = head_mask(av, 45)
-    eyes = []
-    for y, x in zip(*np.nonzero(keep), strict=True):
-        if y >= 40 and not is_skin(av[y, x]):
-            continue
-        canvas[y + HEAD_DY, x + HEAD_DX] = (*av[y, x], 255)
-        if y in EYE_ROWS and x in EYE_COLS and av[y, x, 0] < 0x80:
-            eyes.append((int(y + HEAD_DY), int(x + HEAD_DX)))
-    return canvas.astype(np.uint8), eyes
+def build_sprite() -> tuple[np.ndarray, np.ndarray]:
+    """Return the cut-out figure and its closed-eye overlay, cropped to the figure."""
+    grid = sample_grid(SOURCE, SOURCE_PITCH)
+    figure = figure_mask(grid)
+    sprite = np.zeros((*grid.shape[:2], 4), np.uint8)
+    sprite[figure] = np.c_[grid[figure], np.full(figure.sum(), 255)]
+    lids = closed_eyes(grid, figure)
+    ys, xs = np.nonzero(figure)
+    crop = (slice(ys.min(), ys.max() + 1), slice(xs.min(), xs.max() + 1))
+    return sprite[crop], lids[crop]
 
 
 def sprite_image(pixels: np.ndarray, css_class: str = "") -> str:
@@ -312,16 +166,6 @@ def sprite_image(pixels: np.ndarray, css_class: str = "") -> str:
         f'<image{cls} width="{pixels.shape[1]}" height="{pixels.shape[0]}" '
         f'style="image-rendering:pixelated" href="data:image/png;base64,{data}"/>'
     )
-
-
-def eyelids(canvas: np.ndarray, eyes: list[tuple[int, int]]) -> str:
-    """Closed-eye pixels (skin with a dark lash line), shown briefly by the blink animation."""
-    lash_row = max(y for y, _ in eyes)
-    skin = canvas[lash_row + 2, eyes[0][1], :3]
-    lids = np.zeros_like(canvas)
-    for y, x in eyes:
-        lids[y, x] = (*(hexrgb(LASH) if y == lash_row else skin), 255)
-    return sprite_image(lids, "lid")
 
 
 def connector_end(node: tuple[int, int]) -> tuple[float, float]:
@@ -482,28 +326,30 @@ def footer() -> str:
   >github.com/<tspan class="url">kenn-io</tspan></text>"""
 
 
-def center_piece(canvas: np.ndarray, eyes: list[tuple[int, int]]) -> str:
+def center_piece(sprite: np.ndarray, lids: np.ndarray) -> str:
     cx, cy = CENTER
-    sx, sy = cx - SPRITE_W * PX // 2, cy - SPRITE_H * PX // 2 - 6
-    shadow_y = sy + SPRITE_H * PX + 26
+    scale = SPRITE_HEIGHT / sprite.shape[0]
+    sx, sy = cx - sprite.shape[1] * scale / 2, cy - SPRITE_HEIGHT / 2 - 6
+    shadow_y = sy + SPRITE_HEIGHT + 22
     return f"""<circle class="aura" cx="{cx}" cy="{cy}" r="{RING_R + 30}" fill="url(#aura)"/>
 <circle class="ring ring-a" cx="{cx}" cy="{cy}" r="{RING_R}"/>
 <circle class="ring ring-b" cx="{cx}" cy="{cy}" r="{RING_R - 26}"/>
-<ellipse class="shadow" cx="{cx}" cy="{shadow_y}" rx="150" ry="14" fill="url(#shadow)"/>
+<ellipse class="shadow" cx="{cx}" cy="{shadow_y:.1f}" rx="150" ry="14" fill="url(#shadow)"/>
 <g class="float">
-  <g transform="translate({sx} {sy}) scale({PX})">
-    {sprite_image(canvas)}
-    {eyelids(canvas, eyes)}
+  <g transform="translate({sx:.1f} {sy:.1f}) scale({scale:.4f})">
+    {sprite_image(sprite)}
+    {sprite_image(lids, "lid")}
   </g>
 </g>"""
 
 
 def render() -> str:
-    canvas, eyes = build_sprite()
+    sprite, lids = build_sprite()
     title = "Wes McKinney at Kenn Software"
     desc = (
-        "A 16-bit Wes McKinney floats cross-legged in meditation, orbited by Kenn Software "
-        "projects: " + ", ".join(f"{n} ({t})" for n, t in PROJECTS) + "."
+        "A 16-bit Wes McKinney floats in lotus pose, orbited by Kenn Software projects: "
+        + ", ".join(f"{n} ({t})" for n, t in PROJECTS)
+        + "."
     )
     return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {VIEW_W} {VIEW_H}"
   width="{VIEW_W}" height="{VIEW_H}" role="img" aria-labelledby="t d">
@@ -514,7 +360,7 @@ def render() -> str:
 {header()}
 {project_nodes()}
 {sparkles()}
-{center_piece(canvas, eyes)}
+{center_piece(sprite, lids)}
 {footer()}
 </svg>
 """
