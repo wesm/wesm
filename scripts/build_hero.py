@@ -265,10 +265,6 @@ text {{ font-family: {MONO}; }}
 @keyframes blink {{ 0%, 96% {{ opacity: 0; }} 97%, 99% {{ opacity: 1; }} }}
 @keyframes twinkle {{ 0%, 100% {{ opacity: 0; }} 50% {{ opacity: 0.85; }} }}
 @keyframes cursor {{ 0%, 49% {{ opacity: 1; }} 50%, 100% {{ opacity: 0; }} }}
-@media (prefers-reduced-motion: reduce) {{
-  .pellet, .node, .ring, .aura, .float, .shadow, .lid, .spark, .cursor {{ animation: none; }}
-  .spark {{ opacity: 0.6; }}
-}}
 """
 
 
