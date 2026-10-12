@@ -58,7 +58,7 @@ PROJECTS = [
     ("BenchDB", "performance results, in context"),
 ]
 
-VIEW_W, VIEW_H = 1200, 660
+VIEW_W, VIEW_H = 1200, 600
 CENTER = (600, 364)
 ROW_GAP = 84
 NODE_X = (380, 820)
@@ -224,7 +224,6 @@ text {{ font-family: {MONO}; }}
 .url {{ fill: {SAGE}; }}
 .name {{ font-size: 19px; font-weight: 600; fill: {FG}; }}
 .tag {{ font-size: 14.5px; fill: {FG_MUTED}; }}
-.foot {{ font-size: 14px; fill: {FG_DIM}; }}
 .rule {{ stroke: {LINE}; stroke-width: 1; }}
 .wire {{ stroke: {FG_DIM}; stroke-opacity: 0.6; stroke-width: 1.5; stroke-dasharray: 3 5;
   fill: none; }}
@@ -305,7 +304,7 @@ def background() -> str:
   <rect width="{VIEW_W}" height="{VIEW_H}" fill="url(#sheet)"/>
   <rect width="{VIEW_W}" height="{VIEW_H}" fill="url(#glow-sage)"/>
   <rect width="{VIEW_W}" height="{VIEW_H}" fill="url(#glow-tan)"/>
-  <rect y="124" width="{VIEW_W}" height="{VIEW_H - 124 - 64}" fill="url(#dots)"/>
+  <rect y="124" width="{VIEW_W}" height="{VIEW_H - 124}" fill="url(#dots)"/>
 </g>
 <rect x="0.5" y="0.5" width="{VIEW_W - 1}" height="{VIEW_H - 1}" rx="14"
   fill="none" stroke="{LINE}"/>"""
@@ -320,15 +319,6 @@ def header() -> str:
 <text x="{right}" y="88" text-anchor="end" class="whom"
   >founder · <tspan class="url">kenn.io</tspan></text>
 <line x1="0" y1="124" x2="{VIEW_W}" y2="124" class="rule"/>"""
-
-
-def footer() -> str:
-    y = VIEW_H - 64
-    return f"""<line x1="0" y1="{y}" x2="{VIEW_W}" y2="{y}" class="rule"/>
-<text x="48" y="{y + 38}" class="foot"><tspan class="prompt">$ </tspan
-  >open source · local-first · built for people and their agents</text>
-<text x="{VIEW_W - 48}" y="{y + 38}" text-anchor="end" class="foot"
-  >github.com/<tspan class="url">kenn-io</tspan></text>"""
 
 
 def center_piece(sprite: np.ndarray, lids: np.ndarray) -> str:
@@ -366,7 +356,6 @@ def render() -> str:
 {project_nodes()}
 {sparkles()}
 {center_piece(sprite, lids)}
-{footer()}
 </svg>
 """
 
